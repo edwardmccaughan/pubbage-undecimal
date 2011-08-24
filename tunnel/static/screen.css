@@ -1,0 +1,35 @@
+#screen {
+	width:300px;
+	height:300px;
+	position:relative;
+	border:1px solid black;
+}
+
+.player {
+	width:10px;
+	height:10px;
+	position: absolute;
+	top:0px;
+	background-color:#999;
+}
+
+
+#player0 {background-color:#909;}
+#player1 {background-color:#099;}
+#player2 {background-color:#990;}
+#player3 {background-color:#900;}
+#player4 {background-color:#090;}
+#player5 {background-color:#009;}
+#player6 {background-color:#fff;}
+#player7 {background-color:#FF5200;}
+#player8 {background-color:#FF007E;}
+#player9 {background-color:#900;}
+#player10 {background-color:#f00;}
+#player11 {background-color:#0f0;}
+#player12 {background-color:#00f;}
+#player13 {background-color:#FF00E7;}
+#player14 {background-color:#8A00BC;}
+
+
+.tagged{border-radius:10px}
+

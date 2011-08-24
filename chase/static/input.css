@@ -1,0 +1,31 @@
+body {
+	width:300px;
+}
+
+.button {
+	display:block;
+	width:75px;
+	height:75px;
+	border:2px solid black;
+	position:absolute;
+}
+
+#dpad {
+	position:relative;
+}
+
+
+#left {
+	top:75px;
+}
+
+#right {
+	top:75px;
+	left:150px
+}
+
+#up {left:75px}
+#down {
+	left:75px;
+	top:150px;
+}
