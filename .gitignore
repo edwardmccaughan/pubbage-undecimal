@@ -1,0 +1,8 @@
+.metadata
+*.pyc
+*.swp
+*~
+.eric4project
+.project
+.pydevproject
+
