@@ -1,2 +1,0 @@
-simplejson >= 2.1.0
-tornado >= 1.1.0
