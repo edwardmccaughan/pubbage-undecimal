@@ -1,0 +1,17 @@
+cbase demo
+
+pubbage
+
+	demo setup
+		1- switch lighttp to serve files
+		server.document-root       = "/media/shared/workspace/undecimal-controller-test/tunnel/"
+
+		2- change ip listed on screen.html
+	script
+		things to mention
+			built with tornado, tornadio and socket.io
+				input is a dumb terminal, python just sends data to 
+			I need somewhere to put it and someone to build the games
+			for more information, go to...
+				@have an url to go to
+			

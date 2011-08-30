@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chase- Screen</title>
+	<link rel="stylesheet" type="text/css" media="all" href="/static/screen.css" />
+	<script src="/static/jquery.js"></script>
+	<script src="/static/socketio.js"></script>
+	<script>WEB_SOCKET_SWF_LOCATION = 'http://cdn.socket.io/stable/WebSocketMain.swf';</script>
+	<script src="/static/screen.js"></script>
+	<script src="/static/player.js"></script>
+</head>
+<body>
+<h3>input</h3>
+<div id="xvalue"></div>
+<div id="screen">
+</div>
+</body>
+</html>

@@ -1,3 +1,5 @@
+var keyDownColor = "#ccc";
+var keyUpColor = "#fff";
 
 $(document).ready(function () {
     s = new io.Socket(window.location.hostname, {port: 8001, rememberTransport: false, resource: 'input',});
@@ -6,6 +8,17 @@ $(document).ready(function () {
     s.addEvent('connect', function() {
         s.send('New participant joined');
     });
+	
+	s.addEvent('message', function(data) {
+		if (data) {
+			console.log("message: " + data);
+			
+			var message = data.split("_");
+			if (message[0] == "color") {
+				$("#indicator").css("background-color",message[1]);
+			} 
+		}
+	});
 	configureKeypad();
 	
 	configureForMobiles();
@@ -20,62 +33,42 @@ function configureKeypad(){
 	dDown = false;
 	
 	$('#left').mousedown(function(){
-		s.send('L');
-		lDown = true;
+		lKeyDown();
 	});
 	$('#left').mouseup(function(){
-		s.send('l');
-		lDown = false;
+		lKeyUp();
 	});
 	$('#right').mousedown(function(){
-		s.send('R')
-		rDown = true;
+		rKeyDown();
 	});
 	$('#right').mouseup(function(){
-		s.send('r')
-		rDown = false;
+		rKeyUp();
 	});
 	$('#up').mousedown(function(){
-		s.send('U')
-		uDown = true;
+		uKeyDown();
 	});
 	$('#up').mouseup(function(){
-		s.send('u')
-		uDown = false;
+		uKeyUp();
 	});
 	$('#down').mousedown(function(){
-		s.send('D')
-		dDown = true;
+		dKeyDown();
 	});
 	$('#down').mouseup(function(){
-		s.send('d')
-		dDown = false;
+		dKeyUp();
 	});
 	
 	//if the mouse moves off the button, count it as releasing it
 	$('#left').mouseout(function(){
-		if (lDown) {
-			s.send('l');
-			lDown = false;
-		}
+		lKeyUp();
 	});
 	$('#right').mouseout(function(){
-		if (rDown) {
-			s.send('r');
-			rDown = false;
-		}
+		rKeyUp();
 	});
 	$('#up').mouseout(function(){
-		if (uDown) {
-			s.send('u');
-			uDown = false;
-		}
+		uKeyUp();
 	});
 	$('#down').mouseout(function(){
-		if (dDown) {
-			s.send('d');
-			dDown = false;
-		}
+		dKeyUp();
 	});
 	
 	
@@ -83,51 +76,99 @@ function configureKeypad(){
 	$(document).keydown(function(event){
 	    switch (event.keyCode) {
 	        case 37:
-				if (!lDown) {
-					s.send('L')
-					lDown = true;
-				}
+				lKeyDown();
 	            break
 	        case 38:
-				if (!uDown) {
-					s.send('U')
-					uDown = true;
-				}
+				uKeyDown();
 	            break;
 	        case 39:
-				if (!rDown) {
-					s.send('R')
-					rDown = true;
-				}
+				rKeyDown();
 	            break;
 	        case 40:
-				if (!dDown) {
-					s.send('D')
-					dDown = true;
-				}
+				dKeyDown();
 	            break;
    }});
    $(document).keyup(function(event){
 	    switch (event.keyCode) {
-	        case 37:
-	            s.send('l')
-				lDown = false;
+	       	case 37:
+				lKeyUp();
 	            break
 	        case 38:
-	            s.send('u')
-				dDown = false;
+				uKeyUp();
 	            break;
 	        case 39:
-	            s.send('r')
-				rDown = false;
+				rKeyUp();
 	            break;
 	        case 40:
-	            s.send('d')
-				dDown = false;
+				dKeyUp();
 	            break;
    }});
 
 }
+
+function lKeyDown() {
+	if (!lDown) {
+		$('#left').addClass("down");
+		s.send('L');
+		lDown = true;
+	}
+}
+function lKeyUp() {
+	if (lDown) {
+		$('#left').removeClass("down");
+		s.send('l');
+		lDown = false;
+	}
+}
+
+
+function rKeyDown() {
+	if (!rDown) {
+		$('#right').addClass("down");
+		s.send('R');
+		rDown = true;
+	}
+}
+function rKeyUp() {
+	if (rDown) {
+		$('#right').removeClass("down");
+		s.send('r');
+		rDown = false;
+	}
+}
+
+function uKeyDown() {
+	if (!uDown) {
+		$('#up').addClass("down");
+		s.send('U');
+		uDown = true;
+	}
+}
+function uKeyUp() {
+	if (uDown) {
+		$('#up').removeClass("down");
+		s.send('u');
+		uDown = false;
+	}
+}
+
+function dKeyDown() {
+	if (!dDown) {
+		$('#down').addClass("down");
+		s.send('D');
+		dDown = true;
+	}
+}
+function dKeyUp() {
+	if (dDown) {
+		$('#down').removeClass("down");
+		s.send('d');
+		dDown = false;
+	}
+}
+
+
+
 
 
 

@@ -16,7 +16,7 @@ ROOT = op.normpath(op.dirname(__file__))
 #just render the input.html page        
 class InputHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("input.html")
+        self.render("index.html")
 
 #just render the screen.html page
 class ScreenHandler(tornado.web.RequestHandler):
@@ -52,8 +52,7 @@ application = tornado.web.Application(
 
 if __name__ == "__main__": 
     logging.getLogger().setLevel(logging.DEBUG)
-    #game = Game()
-    Game.game = Game()
+    #Game.game = Game()
     tornadio.server.SocketServer(application)
     
     

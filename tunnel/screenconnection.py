@@ -9,13 +9,18 @@ class ScreenConnection(tornadio.SocketConnection):
         self.screens.add(self)
         for player in PlayerConnection.players:
             player.notifyScreensOfJoin()
-            player.notifyScreensOfLocation()
+            #player.notifyScreensOfLocation()
         
     def on_close(self):
         self.screens.remove(self)
         
     def on_message(self, message):
-        pass
+        messageSplit = message.split("_")
+        if messageSplit[0] == "p":
+            #pass along just the important bit to player
+            playerMessage = "_".join(messageSplit[2:])
+            player = PlayerConnection.getPlayerById(messageSplit[1])
+            player.send(playerMessage)
     
     def update(self):
         self.send(ScreenConnection.x)

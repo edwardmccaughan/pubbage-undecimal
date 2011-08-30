@@ -12,13 +12,20 @@ class PlayerConnection(tornadio.SocketConnection):
         self.notifyScreensOfJoin()
 
     def on_message(self, message):
-       ScreenConnection.notifyScreens("m_" + str(self.id) + message)
+       ScreenConnection.notifyScreens("m_" + str(self.id) + "_" + message)
 
     def on_close(self):
         ScreenConnection.notifyScreens("quit_"+str(self.id))
 
     def notifyScreensOfJoin(self):
         ScreenConnection.notifyScreens("new_"+str(self.id))
+    
+    @staticmethod
+    def getPlayerById(id):
+        for player in PlayerConnection.players:
+            if player.id == int(id):
+                return player
+        return False
         
 from screenconnection import ScreenConnection
 from game import Game
