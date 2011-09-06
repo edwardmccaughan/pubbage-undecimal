@@ -37,7 +37,7 @@ $(document).ready(function () {
 		}
     });
 	
-	setInterval(self.mainLoop, 1000/self.fps);
+	//setInterval(self.mainLoop, 1000/self.fps);
 });
 
 Screen = {
