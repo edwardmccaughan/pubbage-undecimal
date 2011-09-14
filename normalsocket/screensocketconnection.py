@@ -61,6 +61,7 @@ class SocketScreenHandler:
     
     @staticmethod
     def notifyScreens(message):
+        print "trying send screensocketconnections " + message
         if SocketScreenHandler.stream:
             SocketScreenHandler.stream.write(message + "\r\n")
 

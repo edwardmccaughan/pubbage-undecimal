@@ -40,6 +40,7 @@ class ScreenConnection(tornadio.SocketConnection):
     #send a message to them all at once
     @staticmethod
     def notifyScreens(message):
+        print "trying send screenconnections " + message
         for screen in ScreenConnection.screens:
             screen.send(message)
             
