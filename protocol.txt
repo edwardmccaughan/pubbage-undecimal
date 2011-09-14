@@ -19,7 +19,10 @@ The screen receives from the tunnel:
 new_0
 	new player has connected, with an id of 0
 	sent as soon as the player socket connects
-p_1_u
+quit_0
+	player id 0 has quit
+	sent once the socket thinks the player has disconnected, which may vary by connection type
+m_1_u
 	player id 0 has send the message "u"
 
 screen can send messages to players via the tunnel:

@@ -4,11 +4,9 @@ import socket
 from tornado import ioloop, iostream
 
 class SocketScreenHandler:
-    screen = 0
+    stream = 0
 
-    def __init__(self):
-        
-        
+    def __init__(self):  
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.setblocking(0)
@@ -19,9 +17,7 @@ class SocketScreenHandler:
         callback = functools.partial(self.connectionReady, self.sock)
         io_loop.add_handler(self.sock.fileno(), callback, io_loop.READ)
         self.stream = 0
-        
-        
-        
+      
     def connectionReady(self,sock, fd, events):
         while True:
             try:
@@ -32,7 +28,7 @@ class SocketScreenHandler:
                 return
             self.connection.setblocking(0)
             self.stream = iostream.IOStream(self.connection)
-            SocketScreenHandler.screen = self
+            SocketScreenHandler.stream = self.stream
             self.waitForNextMessage()
         
     def on_message(self,message):
@@ -64,7 +60,7 @@ class SocketScreenHandler:
     
     @staticmethod
     def notifyScreens(message):
-        if SocketScreenHandler.screen:
-            SocketScreenHandler.screen.stream.write(message + "\r\n")
+        if SocketScreenHandler.stream:
+            SocketScreenHandler.stream.write(message + "\r\n")
 
 from playerconnection import PlayerConnection
