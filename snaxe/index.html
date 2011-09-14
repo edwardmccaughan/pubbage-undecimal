@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chase- Input</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<script src="static/jquery.js"></script>
+	<script src="static/socketio.js"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="static/controller/input.css" />
+	<script>WEB_SOCKET_SWF_LOCATION = 'static/WebSocketMain.swf';</script>
+	<script src="static/controller/input.js"></script>
+</head>
+<body>
+
+
+<div id="joingame" class="view">
+	<h1>Play Snaxe</h1>
+	<label>enter your name:</label>
+	<p>
+		<input type="text" id="playername" />
+	</p>
+	<div id="joinbutton">insert coin</div>
+</div>
+
+<div id="waiting" class="view">
+	<h1>Play Snaxes</h1>
+	<p>Waiting for your turn to play...</p>
+</div>
+	
+<div id="controller" class="view">
+	<div id="dpad">
+		<!-- buttons just throw data down the socket when pressed and let the server handle everything -->
+		<div id="indicator">&nbsp;</div>
+		<div id="dpadgraphic">&nbsp;</div>
+		<div class="button" id="left">&nbsp;</div>
+		<div class="button" id="right">&nbsp;</div>
+		<div class="button" id="up">&nbsp;</div>
+		<div class="button" id="down">&nbsp;</div>
+	</div>
+	<div style="clear:both"></div>
+</div>
+</body>
+</html>

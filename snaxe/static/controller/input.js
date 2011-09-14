@@ -2,7 +2,43 @@ var keyDownColor = "#ccc";
 var keyUpColor = "#fff";
 
 $(document).ready(function () {
-    s = new io.Socket(window.location.hostname, {port: 8001, rememberTransport: false, resource: 'input',});
+	startSocket();
+	
+	configureKeypad();
+	configureForMobiles();
+	
+	$("#joinbutton").click(joinGame);
+	
+	
+	showState("joingame");
+});
+
+function showState(state) {
+	$("#joingame").css("display", "none");
+	$("#waiting").css("display", "none");
+	$("#controller").css("display", "none");
+
+	if (state == "joingame") {
+		$("#joingame").css("display", "block");
+	} else if (state == "waiting") {
+		$("#waiting").css("display", "block");
+	} else if (state == "controller") {
+		$("#controller").css("display", "block");
+		
+	}
+	
+}
+ function joinGame() {
+ 	var name = $('#playername').val()
+	console.log(name);
+ 	s.send("name_" + name);
+	showState("waiting");
+ }
+
+
+
+function startSocket() {
+	s = new io.Socket(window.location.hostname, {port: 8001, rememberTransport: false, resource: 'input',});
     s.connect();
 
     /*s.addEvent('connect', function() {
@@ -12,18 +48,23 @@ $(document).ready(function () {
 	s.addEvent('message', function(data) {
 		if (data) {
 			console.log("message: " + data);
+			//remove any newlines just in case
+			data = data.replace("\r\n","");
 			
 			var message = data.split("_");
 			if (message[0] == "color") {
-				$("#indicator").css("background-color",message[1]);
-			} 
+				$("#indicator").css("background-color", message[1]);
+			} else if (message[0] == "play") {
+				showState("controller")
+			} else if (message[0] == "gameover") {
+				showState("waiting")
+			}
 		}
 	});
-	configureKeypad();
 	
-	configureForMobiles();
-	
-});
+}
+
+
 
 function configureKeypad(){
 	//check if a keydown is real is just a repeated key
@@ -109,14 +150,14 @@ function configureKeypad(){
 function lKeyDown() {
 	if (!lDown) {
 		$('#left').addClass("down");
-		s.send('L');
+		s.send('W');
 		lDown = true;
 	}
 }
 function lKeyUp() {
 	if (lDown) {
 		$('#left').removeClass("down");
-		s.send('l');
+		s.send('w');
 		lDown = false;
 	}
 }
@@ -125,14 +166,14 @@ function lKeyUp() {
 function rKeyDown() {
 	if (!rDown) {
 		$('#right').addClass("down");
-		s.send('R');
+		s.send('E');
 		rDown = true;
 	}
 }
 function rKeyUp() {
 	if (rDown) {
 		$('#right').removeClass("down");
-		s.send('r');
+		s.send('e');
 		rDown = false;
 	}
 }
@@ -140,14 +181,14 @@ function rKeyUp() {
 function uKeyDown() {
 	if (!uDown) {
 		$('#up').addClass("down");
-		s.send('U');
+		s.send('N');
 		uDown = true;
 	}
 }
 function uKeyUp() {
 	if (uDown) {
 		$('#up').removeClass("down");
-		s.send('u');
+		s.send('n');
 		uDown = false;
 	}
 }
@@ -155,14 +196,14 @@ function uKeyUp() {
 function dKeyDown() {
 	if (!dDown) {
 		$('#down').addClass("down");
-		s.send('D');
+		s.send('S');
 		dDown = true;
 	}
 }
 function dKeyUp() {
 	if (dDown) {
 		$('#down').removeClass("down");
-		s.send('d');
+		s.send('s');
 		dDown = false;
 	}
 }

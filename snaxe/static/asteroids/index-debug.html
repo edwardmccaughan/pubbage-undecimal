@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Asteroids Game - HTML 5 Canvas API example and JavaScript demo</title>
+      <script type="text/javascript" src="scripts/sm2-debug.js"></script>
+      <script type="text/javascript" src="scripts/mathlib.js"></script>
+      <script type="text/javascript" src="scripts/gamelib.js"></script>
+      <script type="text/javascript" src="scripts/asteroids_main.js"></script>
+      <script type="text/javascript" src="scripts/asteroids_player.js"></script>
+      <script type="text/javascript" src="scripts/asteroids_weapons.js"></script>
+      <script type="text/javascript" src="scripts/asteroids_enemies.js"></script>
+      <script type="text/javascript" src="scripts/asteroids_effects.js"></script>
+      <script type="text/javascript" src="scripts/asteroids_DEBUG.js"></script>
+      <style type="text/css">
+         body { font-family: Arial, Helvetica; color: lightblue }
+         .title { padding-top: 6px; text-align: center; font-weight: bold; color: red }
+         P { padding-left: 2em; padding-top: 0; padding-bottom: 0; line-height: 1.0em }
+         P.left { padding-left: 1em; line-height: 1.4em }
+         .bold { font-weight: bold }
+         .small { text-align:center; font-size: 0.75em }
+         a, a:visited, a:active, a:hover { color: #ffffff }
+         .button-overlay { float: right }
+      </style>
+      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+      <script>
+         soundManager.debugMode = true;
+         soundManager.url = 'swf/';
+         soundManager.flashVersion = 9;
+         soundManager.onready(function() {
+           onloadHandler();
+           // start mp3 background music?
+         });
+      </script>
+      <meta name="description" content="Asteroids - HTML 5 Canvas and JavaScript demo by Kevin Roast - an example of what can be acheived without Flash plugins using the canvas APIs" />
+   </head>
+   
+   <body style="background-color: #000000">
+      
+      <div class="button-overlay"><a href="http://twitter.com/share?url=http://www.kevs3d.co.uk/dev/asteroids/&text=Asteroids%20-%20%23HTML5%20%23Canvas%20and%20%23JavaScript%20demo%20(by%20@kevinroast)" class="twitter-share-button">Tweet</a></div>
+      <div class="title">Asteroids - HTML 5 Canvas and JavaScript demo</div>
+      <div style="padding: 12px; min-width: 900px">
+         <table align="center">
+            <tr>
+               <td>
+                  <canvas id="canvas" width="640" height="640" style="border: 2px solid #aaaaaa;"></canvas>
+               </td>
+               <td>
+                  <div>
+                     <p class="left bold">Control Keys:</p>
+                     <p>Left and Right Arrows: Rotate</p>
+                     <p>Up Arrow: Thrust</p>
+                     <p>Down Arrow or SHIFT: Shield (will recharge...)</p>
+                     <p>SPACE: Fire main weapon</p>
+                     <p>Z: Fire bomb weapon (area effect damage, uses shield energy)</p>
+                     <p>NOTE: collect the glowing power-ups to enhance your ship!</p>
+                     <p class="left bold">Other Keys:</p>
+                     <p>L: Skip level (later levels more difficult but score higher)</p>
+                     <p>R: Switch between Modern and Retro graphics</p>
+                     <p>A: Add asteroid - go crazy!</p>
+                     <p>E: Add enemy ship - they will hurt you!</p>
+                     <p>Escape: Pause the game</p>
+                  </div>
+                  <div>
+                     <p class="left">Use <a href="http://www.google.co.uk/chrome" target="new">Chrome</a> or <a href="http://www.mozilla.com/firefox" target="new">FireFox</a> or <a href="http://www.apple.com/safari/download" target="new">Safari</a> or <a href="http://www.opera.com/download" target="new">Opera</a> browser to play!</p>
+                  </div>
+                  <div>
+                     <p class="left"><a href="asteroids-src.zip">Download the JavaScript source code</a></p>
+                  </div>
+                  <div>
+                     <p class="left"><a href="../index.html">See more HTML5 Canvas demos!</a></p>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div class="small">Game demo by Kevin Roast - written to learn the new <a href="http://www.whatwg.org/specs/web-apps/current-work/#the-canvas-element" target="new">HTML 5 Canvas API</a> while reading about the concepts in the the first few chapters of <a href="http://www.amazon.co.uk/exec/obidos/ASIN/0123742978" target="new">this book on game maths</a>.<br>
+      <a href="http://twitter.com/kevinroast" target="new">Follow me on Twitter</a> - Last updated: 6/9/2010</div>
+   </body>
+</html>
