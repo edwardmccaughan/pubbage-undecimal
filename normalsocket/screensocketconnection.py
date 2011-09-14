@@ -44,17 +44,10 @@ class SocketScreenHandler:
             
             if messageSplit[1] == "a":
                 for player in PlayerConnection.players:
-                    player.send(playerMessage)
+                    player.sendMessage(playerMessage)
             else:
                 player = PlayerConnection.getPlayerById(messageSplit[1])
-                player.send(playerMessage)
-            
-            
-        elif messageSplit[0] == "p":
-            #pass along just the important bit to all players
-            playerMessage = "_".join(messageSplit[2:])
-            player = PlayerConnection.getPlayerById(messageSplit[1])
-            player.send(playerMessage)
+                player.sendMessage(playerMessage)
         
         self.waitForNextMessage()
         

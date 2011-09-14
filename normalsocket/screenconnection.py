@@ -25,10 +25,10 @@ class ScreenConnection(tornadio.SocketConnection):
             
             if messageSplit[1] == "a":
                 for player in PlayerConnection.players:
-                    player.send(playerMessage)
+                    player.sendMessage(playerMessage)
             else:
                 player = PlayerConnection.getPlayerById(messageSplit[1])
-                player.send(playerMessage)
+                player.sendMessage(playerMessage)
     
     
     def update(self):
