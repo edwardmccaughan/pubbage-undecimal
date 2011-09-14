@@ -7,12 +7,11 @@ class ScreenConnection(tornadio.SocketConnection):
     
     def on_open(self, *args, **kwargs):
         self.screens.add(self)
-        for player in PlayerConnection.players:
-            player.notifyScreensOfJoin()
             
         #tell self what players exist
         for player in PlayerConnection.players:
             self.send("new_"+str(player.id))
+            self.send("wtf_"+str(player.id))
         
     def on_close(self):
         self.screens.remove(self)
@@ -40,9 +39,9 @@ class ScreenConnection(tornadio.SocketConnection):
     #send a message to them all at once
     @staticmethod
     def notifyScreens(message):
-        print "trying send screenconnections " + message
+        #print "trying send screenconnections " + message
         for screen in ScreenConnection.screens:
-            screen.send(message)
+            screen.send(message.encode())
             
 
 from playerconnection import PlayerConnection

@@ -61,8 +61,9 @@ class SocketScreenHandler:
     
     @staticmethod
     def notifyScreens(message):
-        print "trying send screensocketconnections " + message
+        #print "trying send screensocketconnections " + message
         if SocketScreenHandler.stream:
-            SocketScreenHandler.stream.write(message + "\r\n")
+            fullMessage = message + "\r\n" 
+            SocketScreenHandler.stream.write(fullMessage.encode())
 
 from playerconnection import PlayerConnection
