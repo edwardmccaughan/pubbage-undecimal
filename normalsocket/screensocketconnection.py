@@ -29,6 +29,7 @@ class SocketScreenHandler:
             self.connection.setblocking(0)
             self.stream = iostream.IOStream(self.connection)
             SocketScreenHandler.stream = self.stream
+            self.stream.set_close_callback(self.on_close)
             
             for player in PlayerConnection.players:
                 self.stream.write("new_"+str(player.id)+"\r\n")
@@ -54,6 +55,9 @@ class SocketScreenHandler:
         
     def waitForNextMessage(self):
         self.stream.read_until("\r\n", self.on_message)
+    
+    def on_close(self):
+        SocketScreenHandler.stream = 0
     
     @staticmethod
     def notifyScreens(message):

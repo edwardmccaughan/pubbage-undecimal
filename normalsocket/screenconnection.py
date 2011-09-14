@@ -17,7 +17,8 @@ class ScreenConnection(tornadio.SocketConnection):
     def on_close(self):
         self.screens.remove(self)
         
-    def on_message(self, message):            
+    def on_message(self, message):
+        print "received: " + message   
         messageSplit = message.split("_")
         if messageSplit[0] == "p":
             #pass along just the important bit to player
