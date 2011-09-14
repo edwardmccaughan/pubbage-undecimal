@@ -16,9 +16,12 @@
 	<h1>Play Snaxe</h1>
 	<label>enter your name:</label>
 	<p>
-		<input type="text" id="playername" />
+		<form onsubmit='joinGame();return false;'>
+			<input type="text" id="playername" />
+			<input type="submit" id="joinbutton" value="insert coin" />
+		</form>
 	</p>
-	<div id="joinbutton">insert coin</div>
+	
 </div>
 
 <div id="waiting" class="view">

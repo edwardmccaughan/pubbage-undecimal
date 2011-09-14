@@ -7,7 +7,7 @@ $(document).ready(function () {
 	configureKeypad();
 	configureForMobiles();
 	
-	$("#joinbutton").click(joinGame);
+	//$("#joinbutton").click(joinGame);
 	
 	
 	showState("joingame");
