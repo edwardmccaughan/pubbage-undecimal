@@ -1,0 +1,32 @@
+---------------------
+general overview
+---------------------
+
+controllers <-> tunnel <-> screens
+
+every controller gets assigned a unique id number when it connects.
+When the controller sends a message to the tunnel, the tunnel passes it along to the screens with an id of who it was from.
+screens are all equal, messages from controllers get sent to all screens
+
+Messages are _ delimited, where the first parameter generally being the command/message type and the second being the id of who it is for/from
+
+-------------------------
+messages
+-------------------------
+
+The screen receives from the tunnel:
+
+new_0
+	new player has connected, with an id of 0
+	sent as soon as the player socket connects
+p_1_u
+	player id 0 has send the message "u"
+
+screen can send messages to players via the tunnel:
+
+p_0_something
+	sends player id 0 the message "something"
+p_a_something
+	sends all players the message "something"
+	
+messages to player controllers are usually stripped of the preceding "p_1_" as they are sent, so they can generally process it straight away

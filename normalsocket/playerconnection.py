@@ -31,5 +31,5 @@ class PlayerConnection(tornadio.SocketConnection):
         return False
         
 from screenconnection import ScreenConnection
-from screensocketconnection2 import SocketScreenHandler
+from screensocketconnection import SocketScreenHandler
 from game import Game

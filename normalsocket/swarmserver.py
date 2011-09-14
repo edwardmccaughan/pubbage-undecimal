@@ -7,8 +7,7 @@ import logging,os
 import time
 from playerconnection import PlayerConnection
 from screenconnection import ScreenConnection
-#from screensocketconnection import SocketScreenHandler
-from screensocketconnection2 import SocketScreenHandler
+from screensocketconnection import SocketScreenHandler
 from game import Game
 
 ROOT = op.normpath(op.dirname(__file__))
