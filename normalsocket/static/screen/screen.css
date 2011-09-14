@@ -1,0 +1,32 @@
+/*#screen {
+	width:300px;
+	height:300px;
+	position:relative;
+	border:1px solid black;
+}*/
+
+/*.player {
+	width:10px;
+	height:10px;
+	position: absolute;
+	top:0px;
+	background-color:#999;
+}*/
+
+/*.player {
+	position: absolute;
+	top:0px;
+	width: 0;
+    height: 0;
+    border-left: 50px solid transparent !important;
+    border-right: 50px solid transparent !important;
+
+    border-bottom: 50px solid black !important;
+	border-radius: 0px !important;
+}*/
+
+
+
+
+.tagged{border-radius:10px}
+

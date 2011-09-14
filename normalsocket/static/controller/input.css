@@ -1,0 +1,73 @@
+body {
+	width:300px;
+}
+
+.button {
+	display:block;
+	width:88px;
+	height:88px;
+	position:absolute;
+	background:none;
+}
+.button:hover {
+	cursor:pointer;
+}
+
+#indicator {
+	display:block;
+	width:80px;
+	height:80px;
+	border:1px solid black;
+	position:absolute;
+	top:85px;
+	left:85px;
+}
+
+#dpad {
+	position:relative;
+	width:250px;
+	height:250px;
+}
+
+#dpadgraphic {
+	position:absolute;
+	background: url('dpad/d-pad.png') no-repeat 0 0 transparent;
+	width:250px;
+	height:250px;
+}
+
+
+
+
+#left {
+	top:80px;
+	border-right:none;
+}
+#left.down{
+	background: url('dpad/d-pad-dark.png') no-repeat 0 -80px transparent;
+}
+
+#right {
+	top:80px;
+	left:162px;
+	border-left:none;
+}
+#right.down{
+	background: url('dpad/d-pad-dark.png') no-repeat -162px -80px transparent;
+}
+
+#up {
+	left:80px;
+	border-bottom:none;
+}
+#up.down{
+	background: url('dpad/d-pad-dark.png') no-repeat -80px  0 transparent;
+}
+#down {
+	left:80px;
+	top:162px;
+	border-top:none;
+}
+#down.down{
+	background: url('dpad/d-pad-dark.png') no-repeat  -80px -162px transparent;
+}
