@@ -29,6 +29,10 @@ class SocketScreenHandler:
             self.connection.setblocking(0)
             self.stream = iostream.IOStream(self.connection)
             SocketScreenHandler.stream = self.stream
+            
+            for player in PlayerConnection.players:
+                self.stream.write("new_"+str(player.id)+"\r\n")
+            
             self.waitForNextMessage()
         
     def on_message(self,message):

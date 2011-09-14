@@ -9,6 +9,10 @@ class ScreenConnection(tornadio.SocketConnection):
         self.screens.add(self)
         for player in PlayerConnection.players:
             player.notifyScreensOfJoin()
+            
+        #tell self what players exist
+        for player in PlayerConnection.players:
+            self.send("new_"+str(player.id))
         
     def on_close(self):
         self.screens.remove(self)
@@ -25,7 +29,6 @@ class ScreenConnection(tornadio.SocketConnection):
             else:
                 player = PlayerConnection.getPlayerById(messageSplit[1])
                 player.send(playerMessage)
-    
     
     
     def update(self):
