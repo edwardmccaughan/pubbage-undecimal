@@ -48,7 +48,8 @@ class SocketScreenHandler:
                     player.sendMessage(playerMessage)
             else:
                 player = PlayerConnection.getPlayerById(messageSplit[1])
-                player.sendMessage(playerMessage)
+                if player:
+                    player.sendMessage(playerMessage)
         
         self.waitForNextMessage()
         
@@ -63,7 +64,15 @@ class SocketScreenHandler:
     def notifyScreens(message):
         #print "trying send screensocketconnections " + message
         if SocketScreenHandler.stream:
-            fullMessage = message + "\r\n" 
-            SocketScreenHandler.stream.write(fullMessage.encode())
+            fullMessage = message + "\r\n"
+#            try:
+#                fullMessage.decode('ascii')
+#            except UnicodeDecodeError:
+#                print "fullMessage was not a ascii-encoded unicode string"
+#            else:
+#                print "fullMessage was ascii"
+#            print fullMessage
+            SocketScreenHandler.stream.write(fullMessage.encode('utf8'))
+            #SocketScreenHandler.stream.write(fullMessage)
 
 from playerconnection import PlayerConnection

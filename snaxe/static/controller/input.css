@@ -1,5 +1,8 @@
 body {
 	width:300px;
+	background-color:black;
+	color:white;
+	font-family: "Arial";
 }
 
 
@@ -10,13 +13,16 @@ body {
 
 #joinbutton {
 	width:200px;
-	height:30px;
+	height:40px;
 	font-size:20px;
 	line-height:30px;
-	border:1px solid black;
+	border:2px solid white;
 	text-align:center;
-	margin:0 auto;
+	margin:1em auto;
 	border-radius: 20px;
+	background-color: #757575;
+	color:white;
+	-webkit-appearance: none;
 }
 
 
@@ -53,6 +59,7 @@ body {
 	position:relative;
 	width:250px;
 	height:250px;
+	margin:0 auto;
 }
 
 #dpadgraphic {
@@ -61,9 +68,6 @@ body {
 	width:250px;
 	height:250px;
 }
-
-
-
 
 #left {
 	top:80px;
@@ -97,3 +101,15 @@ body {
 #down.down{
 	background: url('dpad/d-pad-dark.png') no-repeat  -80px -162px transparent;
 }
+
+/*.dark #down, .dark #up,.dark #left,.dark #right,*/
+.dark #dpadgraphic {
+	background-image: url('dpad/d-pad-white.png');
+}
+
+.dark #down.down, .dark #up.down,.dark #left.down,.dark #right.down{
+	background-image: url('dpad/d-pad-white-dark.png');
+}
+
+
+
