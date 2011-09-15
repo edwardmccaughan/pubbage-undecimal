@@ -5,10 +5,7 @@ $(document).ready(function () {
 	startSocket();
 	
 	configureKeypad();
-	configureForMobiles();
-	
-	//$("#joinbutton").click(joinGame);
-	
+	configureForMobiles();	
 	
 	showState("joingame");
 });
@@ -57,7 +54,7 @@ function startSocket() {
 			} else if (message[0] == "play") {
 				showState("controller")
 			} else if (message[0] == "gameover") {
-				showState("waiting")
+				showState("joingame")
 			}
 		}
 	});

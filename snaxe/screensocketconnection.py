@@ -48,7 +48,8 @@ class SocketScreenHandler:
                     player.sendMessage(playerMessage)
             else:
                 player = PlayerConnection.getPlayerById(messageSplit[1])
-                player.sendMessage(playerMessage)
+                if player:
+                    player.sendMessage(playerMessage)
         
         self.waitForNextMessage()
         
