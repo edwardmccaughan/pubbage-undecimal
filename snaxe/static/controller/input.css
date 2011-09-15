@@ -22,6 +22,7 @@ body {
 	border-radius: 20px;
 	background-color: #757575;
 	color:white;
+	-webkit-appearance: none;
 }
 
 
@@ -58,6 +59,7 @@ body {
 	position:relative;
 	width:250px;
 	height:250px;
+	margin:0 auto;
 }
 
 #dpadgraphic {

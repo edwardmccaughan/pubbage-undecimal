@@ -7,6 +7,8 @@ $(document).ready(function () {
 	configureKeypad();
 	configureForMobiles();	
 	
+	$("#joinbutton").mousedown(joinGame);
+	
 	showState("joingame");
 });
 
