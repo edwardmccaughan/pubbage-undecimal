@@ -42,7 +42,7 @@ class ScreenConnection(tornadio.SocketConnection):
     def notifyScreens(message):
         #print "trying send screenconnections " + message
         for screen in ScreenConnection.screens:
-            screen.send(message.encode())
+            screen.send(message)
             
 
 from playerconnection import PlayerConnection

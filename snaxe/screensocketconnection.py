@@ -62,17 +62,8 @@ class SocketScreenHandler:
     
     @staticmethod
     def notifyScreens(message):
-        #print "trying send screensocketconnections " + message
         if SocketScreenHandler.stream:
             fullMessage = message + "\r\n"
-#            try:
-#                fullMessage.decode('ascii')
-#            except UnicodeDecodeError:
-#                print "fullMessage was not a ascii-encoded unicode string"
-#            else:
-#                print "fullMessage was ascii"
-#            print fullMessage
             SocketScreenHandler.stream.write(fullMessage.encode('utf8'))
-            #SocketScreenHandler.stream.write(fullMessage)
 
 from playerconnection import PlayerConnection
