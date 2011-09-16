@@ -30,10 +30,14 @@ function showState(state) {
 	
 }
  function joinGame() {
- 	var name = $('#playername').val()
-	console.log(name);
- 	s.send("name_" + name);
-	showState("queued");
+ 	var name = $('#playername').val();
+    if (name=="") {
+      window.alert("Your player needs a name");
+    } else {
+      console.log(name);
+      s.send("name_" + name);
+      showState("queued");
+   }
  }
 
 
