@@ -55,7 +55,7 @@ function startSocket() {
 			var message = data.split("_");
 			if (message[0] == "color") {
 				$("#indicator").css("background-color", message[1]);
-			} else if (message[0] == "queued") {
+			} else if (message[0] == "prepare") {
 				showState("prepare");
 				countDown(message[1]);
 			}else if (message[0] == "play") {
