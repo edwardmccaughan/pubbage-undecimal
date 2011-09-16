@@ -16,14 +16,16 @@ function showState(state) {
 	$("#joingame").css("display", "none");
 	$("#waiting").css("display", "none");
 	$("#controller").css("display", "none");
+	$("#prepare").css("display", "none");
 
 	if (state == "joingame") {
 		$("#joingame").css("display", "block");
 	} else if (state == "waiting") {
 		$("#waiting").css("display", "block");
+	} else if (state == "prepare") {
+		$("#prepare").css("display", "block");
 	} else if (state == "controller") {
 		$("#controller").css("display", "block");
-		
 	}
 	
 }
@@ -53,7 +55,10 @@ function startSocket() {
 			var message = data.split("_");
 			if (message[0] == "color") {
 				$("#indicator").css("background-color", message[1]);
-			} else if (message[0] == "play") {
+			} else if (message[0] == "prepare") {
+				showState("prepare");
+				countDown(message[1]);
+			}else if (message[0] == "play") {
 				showState("controller")
 			} else if (message[0] == "gameover") {
 				showState("joingame")
@@ -64,6 +69,11 @@ function startSocket() {
 }
 
 
+function countDown(seconds) {
+	$('#countdown .value').html(seconds);
+	if (seconds > 0) setTimeout("countDown("+ (seconds - 1) + ")",1000);
+	
+}
 
 function configureKeypad(){
 	//check if a keydown is real is just a repeated key
@@ -114,6 +124,7 @@ function configureKeypad(){
 	
 	
 	$(document).keydown(function(event){
+		console.log(event.keyCode);
 	    switch (event.keyCode) {
 	        case 37:
 				lKeyDown();

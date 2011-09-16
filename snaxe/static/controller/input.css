@@ -7,7 +7,7 @@ body {
 
 
 /* join game screen */
-#joingame, #waiting {
+#joingame, #waiting, #prepare {
 	text-align:center;
 }
 
@@ -29,7 +29,7 @@ body {
 /*waiting screen*/
 
 
-
+#prepare #countdown {font-size:6em;}
 
 
 /* controller screen */
