@@ -71,9 +71,10 @@ function startSocket() {
 
 function countDown(seconds) {
 	$('#countdown .value').html(seconds);
-	if (seconds > 0) setTimeout("countDown("+ (seconds - 1) + ")",1000);
-	
+	//if (seconds > 0) setTimeout("countDown("+ (seconds - 1) + ")",1000);
 }
+
+
 
 function configureKeypad(){
 	//check if a keydown is real is just a repeated key
