@@ -20,7 +20,7 @@ function showState(state) {
 
 	if (state == "joingame") {
 		$("#joingame").css("display", "block");
-	} else if (state == "waiting") {
+	} else if (state == "queued") {
 		$("#waiting").css("display", "block");
 	} else if (state == "prepare") {
 		$("#prepare").css("display", "block");
