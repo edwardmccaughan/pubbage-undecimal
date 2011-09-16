@@ -33,7 +33,7 @@ function showState(state) {
  	var name = $('#playername').val()
 	console.log(name);
  	s.send("name_" + name);
-	showState("waiting");
+	showState("queued");
  }
 
 
